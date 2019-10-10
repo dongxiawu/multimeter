@@ -1,2 +1,2 @@
-include ':app'
 rootProject.name='multimeter'
+include ':app', ':framework', ':utils', ':business', ':uikit'
