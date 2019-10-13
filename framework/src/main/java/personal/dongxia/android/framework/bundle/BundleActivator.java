@@ -1,4 +1,4 @@
-package personal.dongxia.android.framework;
+package personal.dongxia.android.framework.bundle;
 
 public interface BundleActivator {
     void start();

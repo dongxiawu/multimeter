@@ -28,14 +28,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'com.squareup.okhttp3:okhttp:4.2.1'
-    implementation deps.fastjson
-//    implementation 'com.alibaba:fastjson:1.1.71.android'
-
-//    compileOnly "org.projectlombok:lombok:1.18.10"
-//    annotationProcessor 'org.projectlombok:lombok:1.18.10'
-//    testAnnotationProcessor 'org.projectlombok:lombok:1.18.10'
-//    testCompileOnly 'org.projectlombok:lombok:1.18.10'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'

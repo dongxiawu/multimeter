@@ -1,6 +1,15 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
+    ext.versions = [
+            'lombok': '1.18.10',
+            'fastjson': '1.1.71.android'
+    ]
+
+    ext.deps = [
+            'fastjson': "com.alibaba:fastjson:${versions.fastjson}",
+            'lombok': "org.projectlombok:lombok:${versions.lombok}",
+    ]
     repositories {
         google()
         jcenter()
@@ -8,17 +17,36 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.0'
-        
+
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
 }
 
+// todo 将所有模块的公用依赖转移到这
 allprojects {
+
     repositories {
         google()
         jcenter()
-        
+    }
+
+    dependencies {
+    }
+}
+
+subprojects {
+    afterEvaluate {
+        dependencies {
+            // 所有子模块都依赖 lombok
+            compileOnly deps.lombok
+            annotationProcessor deps.lombok
+            testAnnotationProcessor deps.lombok
+            testCompileOnly deps.lombok
+        }
+    }
+
+    dependencies {
     }
 }
 

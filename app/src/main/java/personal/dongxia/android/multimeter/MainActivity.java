@@ -6,15 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
+import personal.dongxia.android.business.Ip.IpService;
+import personal.dongxia.android.business.Ip.model.Ip;
+import personal.dongxia.android.framework.bundle.basic.BundlePlatform;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,34 +23,24 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         edtIpAddress = findViewById(R.id.edt_ip_address);
         btnQuery = findViewById(R.id.btn_query);
-
         btnQuery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                try {
-                    URL url = new URL("");
-                    HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-                    try {
-//                        urlConnection.setDoOutput(true);
-//                        urlConnection.setChunkedStreamingMode(0);
-
-//                        OutputStream out = new BufferedOutputStream(urlConnection.getOutputStream());
-//                        writeStream(out);
-
-                        InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-                        readStream(in);
-                    } finally {
-                        urlConnection.disconnect();
+               final String address = edtIpAddress.getText().toString();
+                final IpService ipService = BundlePlatform.getServiceManager().getService(IpService.class);
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        final Ip ip = ipService.queryIp(address);
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(MainActivity.this, ip.getCountry(), Toast.LENGTH_LONG).show();
+                            }
+                        });
                     }
-                } catch (MalformedURLException e) {
-
-                } catch (IOException e) {
-
-                }
+                }).start();
             }
         });
-    }
-
-    private void readStream(InputStream in) {
     }
 }
