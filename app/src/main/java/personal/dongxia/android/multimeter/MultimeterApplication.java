@@ -4,7 +4,7 @@ import android.app.Application;
 
 import personal.dongxia.android.business.Ip.IpService;
 import personal.dongxia.android.business.Ip.IpServiceImpl;
-import personal.dongxia.android.framework.bundle.basic.BundlePlatform;
+import personal.dongxia.android.framework.bundle.BundlePlatform;
 
 public class MultimeterApplication extends Application {
     @Override

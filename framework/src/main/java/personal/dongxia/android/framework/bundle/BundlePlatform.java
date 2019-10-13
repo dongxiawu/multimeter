@@ -1,4 +1,4 @@
-package personal.dongxia.android.framework.bundle.basic;
+package personal.dongxia.android.framework.bundle;
 
 import android.app.Application;
 

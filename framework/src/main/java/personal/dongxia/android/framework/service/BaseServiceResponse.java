@@ -1,4 +1,4 @@
-package personal.dongxia.multimeter.foundation.base;
+package personal.dongxia.android.framework.service;
 
 /**
  * 通用服务返回

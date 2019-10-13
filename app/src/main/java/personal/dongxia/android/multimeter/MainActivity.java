@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import personal.dongxia.android.business.Ip.IpService;
 import personal.dongxia.android.business.Ip.model.Ip;
-import personal.dongxia.android.framework.bundle.basic.BundlePlatform;
+import personal.dongxia.android.framework.bundle.BundlePlatform;
 
 public class MainActivity extends AppCompatActivity {
 

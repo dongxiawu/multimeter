@@ -1,4 +1,4 @@
-package personal.dongxia.multimeter.foundation.base;
+package personal.dongxia.android.framework.service;
 
 public class BaseServiceException extends RuntimeException {
 

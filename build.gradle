@@ -3,12 +3,14 @@
 buildscript {
     ext.versions = [
             'lombok': '1.18.10',
-            'fastjson': '1.1.71.android'
+            'fastjson': '1.1.71.android',
+            'okhttp': '4.2.1'
     ]
 
     ext.deps = [
             'fastjson': "com.alibaba:fastjson:${versions.fastjson}",
             'lombok': "org.projectlombok:lombok:${versions.lombok}",
+            'okhttp': "com.squareup.okhttp3:okhttp:${versions.okhttp}"
     ]
     repositories {
         google()
@@ -16,7 +18,7 @@ buildscript {
         
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.0'
+        classpath 'com.android.tools.build:gradle:3.5.1'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
