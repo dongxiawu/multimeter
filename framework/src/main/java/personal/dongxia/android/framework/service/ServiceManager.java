@@ -73,7 +73,7 @@ public class ServiceManager {
 
     private void notifyRegister(Class<?> clazz, Object service) {
         for (ServiceCallback callback : callbacks) {
-            callback.onServiceRegister(clazz, service);
+            //callback.onServiceRegister(clazz, service);
         }
     }
 
@@ -106,7 +106,7 @@ public class ServiceManager {
 
     private void notifyUnregister(Class<?> clazz, Object service) {
         for (ServiceCallback callback : callbacks) {
-            callback.onServiceUnregister(clazz, service);
+            //callback.onServiceUnregister(clazz, service);
         }
     }
 

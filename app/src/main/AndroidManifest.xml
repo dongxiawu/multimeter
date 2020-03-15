@@ -3,7 +3,6 @@
     package="personal.dongxia.android.multimeter">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    
     <application
         android:allowBackup="true"
         android:name=".MultimeterApplication"
@@ -12,6 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <meta-data android:name="UCSDKAppKey" android:value="${UCSDKAppKey}"/>
         <activity android:name=".ip.IpActivity"/>
         <activity android:name=".MainActivity">
             <intent-filter>

@@ -11,10 +11,22 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
     buildTypes {
+        debug {
+            manifestPlaceholders = [
+                    UCSDKAppKey: "Y8jXiX9Z5o9tNo24PSSyNvry9oHg4EBYplOQ+B4scjRDLpyJGr/SDbRzXIDmbM7F5i1Tq5mktkELlSy9LQzOYg=="
+            ]
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            manifestPlaceholders = [
+                    UCSDKAppKey: "Y8jXiX9Z5o9tNo24PSSyNvry9oHg4EBYplOQ+B4scjRDLpyJGr/SDbRzXIDmbM7F5i1Tq5mktkELlSy9LQzOYg=="
+            ]
         }
     }
 }
@@ -24,6 +36,9 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     implementation 'com.squareup.okhttp3:okhttp:4.2.1'
+
+    implementation ("io.reactivex.rxjava2:rxjava:${rxjava_version}")
+    implementation ("io.reactivex.rxjava2:rxandroid:${rxandroid_version}")
 
     testImplementation 'junit:junit:4.12'
     testImplementation 'com.squareup.okhttp3:mockwebserver:4.2.1'
