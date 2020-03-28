@@ -5,14 +5,15 @@
     <application
         android:name=".MultimeterApplication"
         android:allowBackup="true"
+        android:enabled="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:enabled="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".TestActivity"></activity>
         <activity
-            android:name="personal.dongxia.android.multimeter.SecondActivity"
+            android:name=".SecondActivity"
             android:taskAffinity="com.dongxia.test.launcher" />
 
         <activity android:name=".ip.IpActivity" />
@@ -25,12 +26,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity-alias
-            android:name="personal.dongxia.android.multimeter.SecondLauncherActivity"
+            android:name=".SecondLauncherActivity"
             android:enabled="true"
             android:exported="true"
-            android:targetActivity="personal.dongxia.android.multimeter.SecondActivity"
+            android:targetActivity=".SecondActivity"
             android:taskAffinity="com.dongxia.test.launcher">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,6 +38,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity-alias>
+
         <meta-data
             android:name="UCSDKAppKey"
             android:value="${UCSDKAppKey}" />
@@ -46,7 +47,7 @@
             android:name=".TestContentProvider"
             android:authorities="personal.dongxia.provider.test"
             android:enabled="true"
-            android:exported="false"/>
+            android:exported="true" />
     </application>
 
     <uses-permission android:name="android.permission.INTERNET" />
