@@ -30,4 +30,14 @@
         android:text="test"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/to_pull_activity"
+        android:text="to_pull_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/to_camera_activity"
+        android:text="to_camera_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

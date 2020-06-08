@@ -10,12 +10,18 @@ import java.nio.file.Paths as bBar
 /**
  * @date 2020/3/28
  * @author wudongxia
+ * 定义一个类
  */
 class Test {
     // lateinit 必须 为 var
     lateinit var b: String
 
     val c: String by lazy { "1" }
+
+    // 初始化代码
+    init {
+
+    }
 
     @Test
     fun kotlinTest() {

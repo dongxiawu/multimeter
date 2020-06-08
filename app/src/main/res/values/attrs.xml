@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="TaurusPanelLayout">
+        <!--完整进入动画时长，单位ms-->
+        <attr name="TaurusPanelLayout_enterAnimationDuration" format="integer"/>
+        <!--完整退出动画时长，单位ms-->
+        <attr name="TaurusPanelLayout_exitAnimationDuration" format="integer"/>
+        <!--回退动画时长，单位ms-->
+        <attr name="TaurusPanelLayout_rollbackAnimationDuration" format="integer"/>
+        <!--触发进入的距离-->
+        <attr name="TaurusPanelLayout_triggerOffset" format="dimension"/>
+    </declare-styleable>
+</resources>

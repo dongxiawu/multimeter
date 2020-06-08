@@ -6,6 +6,7 @@ import java.util.Observer;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
 import android.view.View.OnClickListener;
@@ -63,6 +64,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 uploadFiles(Arrays.asList("1111","22222","33333","44444","555555"));
+            }
+        });
+
+        findViewById(R.id.to_pull_activity).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, PullActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        findViewById(R.id.to_camera_activity).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, CameraActivity.class);
+                startActivity(intent);
             }
         });
     }
