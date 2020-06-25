@@ -69,20 +69,20 @@ class CameraActivity : AppCompatActivity() {
             }
         }
 
-        binding.cameraPreview.surfaceTextureListener = surfaceTextureListener
-        binding.btnCapture.setOnClickListener {
-            takePicture()
-        }
+//        binding.cameraPreview.surfaceTextureListener = surfaceTextureListener
+//        binding.btnCapture.setOnClickListener {
+//            takePicture()
+//        }
     }
 
     override fun onResume() {
         super.onResume()
         startBackgroundThread()
-        if (binding.cameraPreview.isAvailable) {
-            openCamera()
-        } else {
-            binding.cameraPreview.surfaceTextureListener = surfaceTextureListener
-        }
+//        if (binding.cameraPreview.isAvailable) {
+//            openCamera()
+//        } else {
+//            binding.cameraPreview.surfaceTextureListener = surfaceTextureListener
+//        }
     }
 
     private fun startBackgroundThread() {
@@ -129,28 +129,28 @@ class CameraActivity : AppCompatActivity() {
         if (cameraDevice == null) {
             return
         }
-        val manager = getSystemService(Context.CAMERA_SERVICE) as CameraManager
-        val cameraCharacteristics = manager.getCameraCharacteristics(cameraDevice!!.id)
-        val jpegSize = cameraCharacteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP)!!.getOutputSizes(ImageFormat.JPEG)
-
-        var width = 640
-        var height = 480
-        if (jpegSize != null && jpegSize.size > 0) {
-            width = jpegSize[0].width
-            height = jpegSize[0].height
-        }
-        val reader = ImageReader.newInstance(width, height, ImageFormat.JPEG, 1)
-        val outputSurface :MutableList<Surface> = ArrayList()
-        outputSurface.add(reader.surface)
-        outputSurface.add(Surface(binding.cameraPreview.surfaceTexture))
-        val builder = cameraDevice!!.createCaptureRequest(CameraDevice.TEMPLATE_STILL_CAPTURE)
-        builder.addTarget(reader.surface)
-        builder.set(CaptureRequest.CONTROL_MODE, CameraMetadata.CONTROL_MODE_AUTO)
-
-        val rotation = windowManager.defaultDisplay.rotation
-        builder.set(CaptureRequest.JPEG_ORIENTATION, ORIENTATIONS[rotation])
-        val ts = System.currentTimeMillis()
-        val file = File("${Environment.getExternalStorageDirectory()}/${ts}.jpg")
+//        val manager = getSystemService(Context.CAMERA_SERVICE) as CameraManager
+//        val cameraCharacteristics = manager.getCameraCharacteristics(cameraDevice!!.id)
+//        val jpegSize = cameraCharacteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP)!!.getOutputSizes(ImageFormat.JPEG)
+//
+//        var width = 640
+//        var height = 480
+//        if (jpegSize != null && jpegSize.size > 0) {
+//            width = jpegSize[0].width
+//            height = jpegSize[0].height
+//        }
+//        val reader = ImageReader.newInstance(width, height, ImageFormat.JPEG, 1)
+//        val outputSurface :MutableList<Surface> = ArrayList()
+//        outputSurface.add(reader.surface)
+//        outputSurface.add(Surface(binding.cameraPreview.surfaceTexture))
+//        val builder = cameraDevice!!.createCaptureRequest(CameraDevice.TEMPLATE_STILL_CAPTURE)
+//        builder.addTarget(reader.surface)
+//        builder.set(CaptureRequest.CONTROL_MODE, CameraMetadata.CONTROL_MODE_AUTO)
+//
+//        val rotation = windowManager.defaultDisplay.rotation
+//        builder.set(CaptureRequest.JPEG_ORIENTATION, ORIENTATIONS[rotation])
+//        val ts = System.currentTimeMillis()
+//        val file = File("${Environment.getExternalStorageDirectory()}/${ts}.jpg")
 
     }
 
@@ -164,23 +164,23 @@ class CameraActivity : AppCompatActivity() {
     }
 
     private fun createCameraPreview() {
-        val texture = binding.cameraPreview.surfaceTexture
-        val surface = Surface(texture)
-        texture.setDefaultBufferSize(imageDimensions!!.width, imageDimensions!!.height)
-        captureRequestBuilder = cameraDevice!!.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW)
-        captureRequestBuilder!!.addTarget(surface)
-        cameraDevice!!.createCaptureSession(arrayOf(surface).toMutableList(), object : CameraCaptureSession.StateCallback() {
-            override fun onConfigured(session: CameraCaptureSession) {
-                if (cameraDevice != null) {
-                    cameraCaptureSession = session
-                    updatePreview()
-                }
-            }
-
-            override fun onConfigureFailed(session: CameraCaptureSession) {
-                Toast.makeText(this@CameraActivity, "onConfigureFailed", Toast.LENGTH_LONG).show()
-            }
-        }, null)
+//        val texture = binding.cameraPreview.surfaceTexture
+//        val surface = Surface(texture)
+//        texture.setDefaultBufferSize(imageDimensions!!.width, imageDimensions!!.height)
+//        captureRequestBuilder = cameraDevice!!.createCaptureRequest(CameraDevice.TEMPLATE_PREVIEW)
+//        captureRequestBuilder!!.addTarget(surface)
+//        cameraDevice!!.createCaptureSession(arrayOf(surface).toMutableList(), object : CameraCaptureSession.StateCallback() {
+//            override fun onConfigured(session: CameraCaptureSession) {
+//                if (cameraDevice != null) {
+//                    cameraCaptureSession = session
+//                    updatePreview()
+//                }
+//            }
+//
+//            override fun onConfigureFailed(session: CameraCaptureSession) {
+//                Toast.makeText(this@CameraActivity, "onConfigureFailed", Toast.LENGTH_LONG).show()
+//            }
+//        }, null)
     }
 
     private fun updatePreview() {

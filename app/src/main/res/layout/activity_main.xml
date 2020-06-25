@@ -40,4 +40,15 @@
         android:text="to_camera_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/to_lifecycle_test"
+        android:text="to_lifecycle_test_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/to_view_model_test"
+        android:text="to_view_model_test_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

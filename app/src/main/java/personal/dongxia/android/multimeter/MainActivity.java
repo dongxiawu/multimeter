@@ -18,6 +18,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.lifecycle.LifecycleEventObserver;
+import androidx.lifecycle.LifecycleObserver;
+import androidx.lifecycle.LifecycleOwner;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -29,6 +32,8 @@ import io.reactivex.functions.Function;
 import personal.dongxia.android.business.Ip.IpService;
 import personal.dongxia.android.business.Ip.model.Ip;
 import personal.dongxia.android.framework.bundle.BundlePlatform;
+import personal.dongxia.android.multimeter.lifecycle.LifecycleTestActivity;
+import personal.dongxia.android.multimeter.viewmodel.ViewModelTestActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -78,7 +83,21 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.to_camera_activity).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, CameraActivity.class);
+                Intent intent = new Intent(MainActivity.this, CameraActivity2.class);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.to_lifecycle_test).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, LifecycleTestActivity.class);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.to_view_model_test).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ViewModelTestActivity.class);
                 startActivity(intent);
             }
         });
