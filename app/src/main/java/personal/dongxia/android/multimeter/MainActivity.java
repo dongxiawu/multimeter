@@ -33,6 +33,7 @@ import personal.dongxia.android.business.Ip.IpService;
 import personal.dongxia.android.business.Ip.model.Ip;
 import personal.dongxia.android.framework.bundle.BundlePlatform;
 import personal.dongxia.android.multimeter.lifecycle.LifecycleTestActivity;
+import personal.dongxia.android.multimeter.page.PageTestActivity;
 import personal.dongxia.android.multimeter.viewmodel.ViewModelTestActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -98,6 +99,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ViewModelTestActivity.class);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.to_page_list).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, PageTestActivity.class);
                 startActivity(intent);
             }
         });

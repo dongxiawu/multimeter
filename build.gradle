@@ -19,6 +19,39 @@ buildscript {
         google()
         jcenter()
         mavenCentral()
+        maven {
+            url "http://mvnonline.alibaba-inc.com/mvn/repository"
+        }
+        maven {
+            url "http://mvnonline.alibaba-inc.com/mvn/releases"
+        }
+        maven {
+            url 'http://maven.aliyun.com/nexus/content/groups/public/'
+            name 'aliyun'
+        }
+        maven {
+            url 'http://maven.aliyun.com/nexus/content/repositories/google/'
+            name 'aliyun-google'
+        }
+        maven {
+            url 'http://mvn.dev.alipay.net/artifactory/content/repositories/mobile-haina'
+        }
+        maven {
+            url 'http://mvn.cloud.alipay.com/nexus/content/repositories/releases/'
+            name 'alipay'
+            credentials {
+                username 'MvnRead'
+                password 'reaDAct111'
+            }
+        }
+
+        maven {
+            url "http://mvnrepo.alibaba-inc.com/mvn/repository"
+        }
+        maven { url 'https://plugins.gradle.org/m2/' }
+        maven { url 'http://maven.aliyun.com/nexus/content/repositories/google' }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
         
     }
     dependencies {
@@ -36,8 +69,41 @@ allprojects {
         google()
         jcenter()
         mavenCentral()
+        maven {
+            url "http://mvnonline.alibaba-inc.com/mvn/repository"
+        }
+        maven {
+            url "http://mvnonline.alibaba-inc.com/mvn/releases"
+        }
+        maven {
+            url 'http://maven.aliyun.com/nexus/content/groups/public/'
+            name 'aliyun'
+        }
+        maven {
+            url 'http://maven.aliyun.com/nexus/content/repositories/google/'
+            name 'aliyun-google'
+        }
+        maven {
+            url 'http://mvn.dev.alipay.net/artifactory/content/repositories/mobile-haina'
+        }
+        maven {
+            url 'http://mvn.cloud.alipay.com/nexus/content/repositories/releases/'
+            name 'alipay'
+            credentials {
+                username 'MvnRead'
+                password 'reaDAct111'
+            }
+        }
+
+        maven {
+            url "http://mvnrepo.alibaba-inc.com/mvn/repository"
+        }
         maven { url "https://jitpack.io" }
         maven { url 'https://maven.google.com' }
+        maven { url 'https://plugins.gradle.org/m2/' }
+        maven { url 'http://maven.aliyun.com/nexus/content/repositories/google' }
+        maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+        maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
     }
 
     dependencies {

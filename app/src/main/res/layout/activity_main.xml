@@ -51,4 +51,9 @@
         android:text="to_view_model_test_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/to_page_list"
+        android:text="to_page_list_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>
