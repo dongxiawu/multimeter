@@ -2,12 +2,8 @@ package personal.dongxia.android.multimeter;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Observer;
-import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.util.Log;
 import android.view.View.OnClickListener;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,23 +14,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.lifecycle.LifecycleEventObserver;
-import androidx.lifecycle.LifecycleObserver;
-import androidx.lifecycle.LifecycleOwner;
 import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.ObservableSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Action;
 import io.reactivex.functions.Function;
 import personal.dongxia.android.business.Ip.IpService;
 import personal.dongxia.android.business.Ip.model.Ip;
 import personal.dongxia.android.framework.bundle.BundlePlatform;
 import personal.dongxia.android.multimeter.databinding.DataBindingTestActivity;
 import personal.dongxia.android.multimeter.lifecycle.LifecycleTestActivity;
-import personal.dongxia.android.multimeter.location.LocationActivity;
+import personal.dongxia.android.multimeter.district.LocationActivity;
 import personal.dongxia.android.multimeter.page.PageTestActivity;
 import personal.dongxia.android.multimeter.viewmodel.ViewModelTestActivity;
 

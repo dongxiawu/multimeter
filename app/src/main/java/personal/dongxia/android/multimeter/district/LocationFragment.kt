@@ -1,4 +1,4 @@
-package personal.dongxia.android.multimeter.location
+package personal.dongxia.android.multimeter.district
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,10 +8,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 import personal.dongxia.android.multimeter.R
-import personal.dongxia.android.multimeter.location.model.Location
-import personal.dongxia.android.multimeter.location.request.query
+import personal.dongxia.android.multimeter.district.bean.District
+import personal.dongxia.android.multimeter.district.request.query
 
-private const val PARENT_ID = "parentId"
+private const val ADDRESS_CODE = "addressCode"
 
 
 class LocationFragment : Fragment() {
@@ -24,7 +24,7 @@ class LocationFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            parentId = it.getString(PARENT_ID)
+            parentId = it.getString(ADDRESS_CODE)
         }
     }
 
@@ -35,8 +35,8 @@ class LocationFragment : Fragment() {
         recyclerView.addItemDecoration(personal.dongxia.android.multimeter.uikit.widget.recyclerview.DividerItemDecoration(requireContext(), DividerItemDecoration.VERTICAL))
         locationAdapter = LocationAdapter()
         locationAdapter.onItemClickListener = object : LocationAdapter.OnItemClickListener {
-            override fun onClick(location: Location) {
-                onItemClickListener?.onClick(location)
+            override fun onClick(district: District) {
+                onItemClickListener?.onClick(district)
             }
         }
         recyclerView.adapter = locationAdapter
@@ -51,7 +51,7 @@ class LocationFragment : Fragment() {
             val result = query(parentId)
             recyclerView.post {
                 locationAdapter.locationList.clear()
-                locationAdapter.locationList.addAll(result.result)
+                locationAdapter.locationList.addAll(result.districts[0].districts)
                 locationAdapter.notifyDataSetChanged()
             }
         }).start()
@@ -59,16 +59,16 @@ class LocationFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(parentId: String) =
+        fun newInstance(addressCode: String) =
                 LocationFragment().apply {
                     arguments = Bundle().apply {
-                        putString(PARENT_ID, parentId)
+                        putString(ADDRESS_CODE, addressCode)
                     }
                 }
     }
 
 
     interface OnItemClickListener {
-        fun onClick(location: Location);
+        fun onClick(district: District);
     }
 }

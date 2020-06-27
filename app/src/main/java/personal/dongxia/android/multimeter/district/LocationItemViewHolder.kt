@@ -1,4 +1,4 @@
-package personal.dongxia.android.multimeter.location
+package personal.dongxia.android.multimeter.district
 
 import android.view.View
 import android.widget.TextView

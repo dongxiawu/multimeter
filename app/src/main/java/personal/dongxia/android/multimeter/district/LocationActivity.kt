@@ -1,13 +1,9 @@
-package personal.dongxia.android.multimeter.location
+package personal.dongxia.android.multimeter.district
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.DividerItemDecoration.VERTICAL
-import androidx.recyclerview.widget.RecyclerView
 import personal.dongxia.android.multimeter.R
-import personal.dongxia.android.multimeter.location.model.Location
-import personal.dongxia.android.multimeter.location.request.query
-import personal.dongxia.android.multimeter.uikit.widget.recyclerview.DividerItemDecoration
+import personal.dongxia.android.multimeter.district.bean.District
 
 private const val TAG = "LocationActivity"
 
@@ -16,14 +12,14 @@ class LocationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_location)
-        val fragment = LocationFragment.newInstance("0")
+        val fragment = LocationFragment.newInstance("100000")
         fragment.onItemClickListener = onItemClickListener
         supportFragmentManager.beginTransaction().add(R.id.content, fragment).show(fragment).commit()
     }
     private val onItemClickListener = object : LocationFragment.OnItemClickListener {
-        override fun onClick(location: Location) {
-            if (location.hasNextLevel()) {
-                val fragment = LocationFragment.newInstance(location.id)
+        override fun onClick(district: District) {
+            if (district.hasNextLevel()) {
+                val fragment = LocationFragment.newInstance(district.addressCode)
                 fragment.onItemClickListener = this
                 supportFragmentManager.beginTransaction().add(R.id.content, fragment).show(fragment).commit()
             }

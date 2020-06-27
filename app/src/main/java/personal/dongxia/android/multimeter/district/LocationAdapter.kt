@@ -1,17 +1,17 @@
-package personal.dongxia.android.multimeter.location
+package personal.dongxia.android.multimeter.district
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import personal.dongxia.android.multimeter.R
-import personal.dongxia.android.multimeter.location.model.Location
+import personal.dongxia.android.multimeter.district.bean.District
 
 /**
  * @date 2020/6/27
  * @author wudongxia
  */
 class LocationAdapter: RecyclerView.Adapter<LocationItemViewHolder>() {
-    val locationList = ArrayList<Location>()
+    val locationList = ArrayList<District>()
     var onItemClickListener: OnItemClickListener? = null
 
     override fun onBindViewHolder(holder: LocationItemViewHolder, position: Int) {
@@ -30,6 +30,6 @@ class LocationAdapter: RecyclerView.Adapter<LocationItemViewHolder>() {
     override fun getItemCount(): Int = locationList.size
 
     interface OnItemClickListener {
-        fun onClick(location: Location);
+        fun onClick(district: District);
     }
 }
