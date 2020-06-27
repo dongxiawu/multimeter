@@ -34,6 +34,7 @@ import personal.dongxia.android.business.Ip.model.Ip;
 import personal.dongxia.android.framework.bundle.BundlePlatform;
 import personal.dongxia.android.multimeter.databinding.DataBindingTestActivity;
 import personal.dongxia.android.multimeter.lifecycle.LifecycleTestActivity;
+import personal.dongxia.android.multimeter.location.LocationActivity;
 import personal.dongxia.android.multimeter.page.PageTestActivity;
 import personal.dongxia.android.multimeter.viewmodel.ViewModelTestActivity;
 
@@ -114,6 +115,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, DataBindingTestActivity.class);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.to_location_activity).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, LocationActivity.class);
                 startActivity(intent);
             }
         });
