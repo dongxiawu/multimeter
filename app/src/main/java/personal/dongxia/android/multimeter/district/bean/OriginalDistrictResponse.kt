@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName
  * @author wudongxia
  */
 @Keep
-class DistrictResponse {
+class OriginalDistrictResponse {
     lateinit var status: String
     lateinit var info: String
     @SerializedName("infocode") lateinit var infoCode: String

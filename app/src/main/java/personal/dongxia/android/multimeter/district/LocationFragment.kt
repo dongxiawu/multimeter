@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import personal.dongxia.android.multimeter.R
 import personal.dongxia.android.multimeter.district.bean.District
 import personal.dongxia.android.multimeter.district.request.query
+import personal.dongxia.android.multimeter.district.request.querySubDistrictList
 
 private const val ADDRESS_CODE = "addressCode"
 
@@ -48,10 +49,10 @@ class LocationFragment : Fragment() {
 
     private fun loadData(parentId: String) {
         Thread(Runnable {
-            val result = query(parentId)
+            val result = querySubDistrictList(parentId)
             recyclerView.post {
                 locationAdapter.locationList.clear()
-                locationAdapter.locationList.addAll(result.districts[0].districts)
+                locationAdapter.locationList.addAll(result.districts)
                 locationAdapter.notifyDataSetChanged()
             }
         }).start()

@@ -5,7 +5,8 @@ import okhttp3.OkHttpClient
 import okhttp3.Request
 import org.json.JSONObject
 import personal.dongxia.android.multimeter.district.bean.District
-import personal.dongxia.android.multimeter.district.bean.DistrictResponse
+import personal.dongxia.android.multimeter.district.bean.OriginalDistrictResponse
+import personal.dongxia.android.multimeter.district.bean.SubDistrictResponse
 
 /**
  * @date 2020/6/27
@@ -21,13 +22,28 @@ private val DEFAULT_EMPTY_LOCATION_RESPONSE =
                 .put("errorCode", 1)
                 .put("result", emptyList<District>()))
 
-fun query(addressCode: String = ROOT_ADDRESS_CODE): DistrictResponse {
+fun querySubDistrictList(parentAddressCode: String = ROOT_ADDRESS_CODE): SubDistrictResponse {
+    val client = OkHttpClient()
+    val request = Request.Builder()
+            .url("$HOST?keywords=$parentAddressCode&key=$APP_KEY&subdistrict=1")
+            .build()
+    val response = client.newCall(request).execute()
+    val originalResult = Gson().fromJson(response.body?.string(), OriginalDistrictResponse::class.java)
+    val result = SubDistrictResponse()
+    result.status = originalResult.status
+    result.info = originalResult.info
+    result.infoCode = originalResult.infoCode
+    result.districts = originalResult.districts[0].districts
+    return result
+}
+
+fun query(addressCode: String = ROOT_ADDRESS_CODE): OriginalDistrictResponse {
     val client = OkHttpClient()
     val request = Request.Builder()
             .url("$HOST?keywords=$addressCode&key=$APP_KEY&subdistrict=1")
             .build()
     val response = client.newCall(request).execute()
-    val result = Gson().fromJson(response.body?.string(), DistrictResponse::class.java)
+    val result = Gson().fromJson(response.body?.string(), OriginalDistrictResponse::class.java)
 //    if (addressCode != ROOT_ADDRESS_CODE) {
 //        var districts = result.districts[0]
 //        while (districts.addressCode != addressCode) {
