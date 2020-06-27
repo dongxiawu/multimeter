@@ -11,4 +11,6 @@ import com.google.gson.annotations.SerializedName
 data class Location(val id: String,
                     @SerializedName("fid") val parentId: String,
                     @SerializedName("level_id") val levelId: String,
-                    val name: String)
+                    val name: String) {
+    fun hasNextLevel() = levelId.toInt() < 4
+}

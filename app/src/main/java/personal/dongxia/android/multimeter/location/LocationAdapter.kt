@@ -12,10 +12,14 @@ import personal.dongxia.android.multimeter.location.model.Location
  */
 class LocationAdapter: RecyclerView.Adapter<LocationItemViewHolder>() {
     val locationList = ArrayList<Location>()
+    var onItemClickListener: OnItemClickListener? = null
 
     override fun onBindViewHolder(holder: LocationItemViewHolder, position: Int) {
         val location = locationList[position]
         holder.tvName.text = location.name
+        holder.itemView.setOnClickListener {
+            onItemClickListener?.onClick(locationList[holder.layoutPosition])
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocationItemViewHolder {
@@ -24,4 +28,8 @@ class LocationAdapter: RecyclerView.Adapter<LocationItemViewHolder>() {
     }
 
     override fun getItemCount(): Int = locationList.size
+
+    interface OnItemClickListener {
+        fun onClick(location: Location);
+    }
 }
