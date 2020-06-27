@@ -56,4 +56,9 @@
         android:text="to_page_list_activity"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/to_data_binding_activity"
+        android:text="to_data_binding_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

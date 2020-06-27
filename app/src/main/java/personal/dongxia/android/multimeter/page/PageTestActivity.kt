@@ -20,9 +20,7 @@ class PageTestActivity : AppCompatActivity() {
         viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(PageTestViewModel::class.java)
         recyclerView = findViewById(R.id.recycler_view)
         adapter = PageTestAdapter()
-        viewModel.data.observe(this, Observer<PagedList<PageItem>> {
-            adapter.submitList(it)
-        })
+        viewModel.data.observe(this, Observer { adapter.submitList(it) })
         recyclerView.adapter = adapter
     }
 }

@@ -3,4 +3,5 @@
 2. 编译插件，脚本技术
 3. jetpack
     databinding
+4. 框架技术 MVC MVP MVVM
     
