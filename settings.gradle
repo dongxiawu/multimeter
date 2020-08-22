@@ -1,3 +1,4 @@
 rootProject.name='multimeter'
 include ':app', ':framework', ':utils', ':business', ':uikit', ':foundation'
 include ':permission'
+//include ':plugin'

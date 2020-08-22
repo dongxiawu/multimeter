@@ -4,8 +4,8 @@ import com.alibaba.fastjson.JSONObject;
 
 import java.io.IOException;
 
-import lombok.Getter;
-import lombok.Setter;
+//import lombok.Getter;
+//import lombok.Setter;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -27,7 +27,7 @@ public class IpServiceImpl implements IpService {
             response = client.newCall(request).execute();
             String stringResult = response.body().string();
             result  = JSONObject.parseObject(stringResult, QueryResult.class);
-            result.setAddress(address);
+            //result.setAddress(address);
         }catch (IOException e) {
             // todo
         } finally {
@@ -43,23 +43,23 @@ public class IpServiceImpl implements IpService {
         if (queryResult == null || queryResult.result == null || !"200".equals(queryResult.resultcode)) {
             return null;
         }
-        ip.setAddress(queryResult.address);
-        ip.setCity(queryResult.result.City);
-        ip.setCountry(queryResult.result.Country);
-        ip.setProvince(queryResult.result.Province);
-        ip.setIsp(queryResult.result.Isp);
+        //ip.setAddress(queryResult.address);
+        //ip.setCity(queryResult.result.City);
+        //ip.setCountry(queryResult.result.Country);
+        //ip.setProvince(queryResult.result.Province);
+        //ip.setIsp(queryResult.result.Isp);
         return ip;
     }
 
-    @Getter
-    @Setter
+    //@Getter
+    //@Setter
     private static class QueryResult {
         private String resultcode;
         private String address;
         private String reason;
         private Result result;
-        @Getter
-        @Setter
+        //@Getter
+        //@Setter
         private class Result {
             public String Country;
             public String Province;

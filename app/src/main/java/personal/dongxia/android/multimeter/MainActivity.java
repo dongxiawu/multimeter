@@ -1,9 +1,11 @@
 package personal.dongxia.android.multimeter;
 
+import java.net.URLEncoder;
 import java.util.Arrays;
 import java.util.List;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 import android.view.View.OnClickListener;
 import androidx.appcompat.app.AppCompatActivity;
@@ -44,18 +46,18 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                final String address = edtIpAddress.getText().toString();
                 final IpService ipService = BundlePlatform.getServiceManager().getService(IpService.class);
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        final Ip ip = ipService.queryIp(address);
-                        runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(MainActivity.this, ip.getCountry(), Toast.LENGTH_LONG).show();
-                            }
-                        });
-                    }
-                }).start();
+                //new Thread(new Runnable() {
+                //    @Override
+                //    public void run() {
+                //        final Ip ip = ipService.queryIp(address);
+                //        runOnUiThread(new Runnable() {
+                //            @Override
+                //            public void run() {
+                //                Toast.makeText(MainActivity.this, ip.getCountry(), Toast.LENGTH_LONG).show();
+                //            }
+                //        });
+                //    }
+                //}).start();
             }
         });
         findViewById(R.id.test).setOnClickListener(new OnClickListener() {
@@ -113,6 +115,29 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, LocationActivity.class);
                 startActivity(intent);
+            }
+        });
+        findViewById(R.id.to_dingtalk).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                String url = "dingtalk://dingtalkclient/page/link?url=http://www.baidu.com";
+                intent.setData(Uri.parse(url));
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
+        findViewById(R.id.to_taurus).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+
+                String jumpUrl = "taurus://taurusclient/action/open_app?appId=" + URLEncoder.encode("1111111111111111") + "&type=2"; //必须对url做encode
+                Uri uri = Uri.parse(jumpUrl);
+                intent.setData(uri);
+                if (null != intent.resolveActivity(getPackageManager())) {
+                    startActivity(intent);
+                }
             }
         });
     }

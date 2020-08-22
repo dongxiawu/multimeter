@@ -8,6 +8,7 @@ import java.lang.annotation.Retention
 import java.lang.annotation.RetentionPolicy
 
 /**
+ * 高德行政区划模型
  * @date 2020/6/27
  * @author wudongxia
  */
@@ -17,7 +18,7 @@ data class District(@SerializedName("citycode") val cityCode: Any,
                     @SerializedName("center") val center: String,
                     @SerializedName("name") val name: String,
                     @Level @SerializedName("level") val level: String,
-                    @SerializedName("districts") val districts: List<District>) {
+                    @SerializedName("districts") val subDistricts: List<District>) {
 
 
     fun getCenterLonLat(): LonLatPoint {

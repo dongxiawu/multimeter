@@ -12,8 +12,8 @@ lateinit var subject: String
 
 fun test() {
     // todo
-    if (subject.isInitialized) {
-    }
+//    if (subject::isInitialized) {
+//    }
 }
 
 class Test2 {

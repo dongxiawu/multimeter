@@ -6,11 +6,11 @@ import androidx.annotation.IntDef;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
+//import lombok.Getter;
+//import lombok.Setter;
+//
+//@Getter
+//@Setter
 public class Ip {
 
     @IntDef({

@@ -1,4 +1,5 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply plugin: "com.dorongold.task-tree"
 
 buildscript {
     ext {
@@ -16,9 +17,9 @@ buildscript {
             'okhttp': "com.squareup.okhttp3:okhttp:${versions.okhttp}"
     ]
     repositories {
-//        google()
-//        jcenter()
-//        mavenCentral()
+        google()
+        jcenter()
+        mavenCentral()
         maven {
             url "http://mvnonline.alibaba-inc.com/mvn/repository"
         }
@@ -48,15 +49,18 @@ buildscript {
         maven {
             url "http://mvnrepo.alibaba-inc.com/mvn/repository"
         }
+        maven { url '../repository' }
+        maven { url 'https://jitpack.io' }
         maven { url 'https://plugins.gradle.org/m2/' }
         maven { url 'http://maven.aliyun.com/nexus/content/repositories/google' }
         maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
         maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
-        
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.6.2'
+        classpath 'com.android.tools.build:gradle:3.6.4'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.61"
+        classpath "gradle.plugin.com.dorongold.plugins:task-tree:1.5"
+
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -66,9 +70,9 @@ buildscript {
 allprojects {
 
     repositories {
-//        google()
-//        jcenter()
-//        mavenCentral()
+        google()
+        jcenter()
+        mavenCentral()
         maven {
             url "http://mvnonline.alibaba-inc.com/mvn/repository"
         }
@@ -98,6 +102,7 @@ allprojects {
         maven {
             url "http://mvnrepo.alibaba-inc.com/mvn/repository"
         }
+        maven { url '../repository' }
         maven { url "https://jitpack.io" }
         maven { url 'https://maven.google.com' }
         maven { url 'https://plugins.gradle.org/m2/' }
@@ -111,15 +116,15 @@ allprojects {
 }
 
 subprojects {
-    afterEvaluate {
-        dependencies {
-            // 所有子模块都依赖 lombok
-            compileOnly deps.lombok
-            annotationProcessor deps.lombok
-            testAnnotationProcessor deps.lombok
-            testCompileOnly deps.lombok
-        }
-    }
+//    afterEvaluate {
+//        dependencies {
+//            // 所有子模块都依赖 lombok
+//            compileOnly deps.lombok
+//            annotationProcessor deps.lombok
+//            testAnnotationProcessor deps.lombok
+//            testCompileOnly deps.lombok
+//        }
+//    }
 
     dependencies {
     }
