@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".district.LocationActivity"></activity>
+        <activity android:name=".FileProviderActivity"></activity>
+        <activity android:name=".district.LocationActivity" />
         <activity android:name=".page.PageTestActivity" />
         <activity android:name=".databinding.DataBindingTestActivity" />
         <activity
@@ -56,27 +57,28 @@
             android:value="${UCSDKAppKey}" />
 
         <provider
-            android:authorities="personal.dongxia.provider.test"
-            android:name="androidx.core.content.FileProvider"/>
-
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_provider" />
+        </provider>
         <provider
             android:name=".TestContentProvider"
             android:authorities="personal.dongxia.provider.test"
             android:enabled="true"
             android:exported="true" />
     </application>
-
-
-
+    <uses-feature android:name="android.hardware.camera2" />
 
     <uses-feature android:name="android.hardware.location.gps" />
-
-    <uses-feature android:name="android.hardware.camera2" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
 </manifest>

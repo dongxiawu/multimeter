@@ -140,6 +140,13 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        findViewById(R.id.to_provider).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, FileProviderActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
 
