@@ -1,5 +1,7 @@
 package personal.dongxia.android.multimeter.kotlin
 
+import android.util.Log
+
 /**
  * kotlin 测试类
  * @date 2020/3/28
@@ -19,7 +21,7 @@ class Test {
      * 默认值
      */
     fun sum(a: Int, b: Int = 0) {
-
+        Log.i()
     }
 
     /**

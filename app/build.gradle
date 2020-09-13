@@ -58,7 +58,7 @@ dependencies {
 
     //leakcanary
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    debugImplementation "com.squareup.leakcanary:leakcanary-android:${leakcanary_version}"
+//    debugImplementation "com.squareup.leakcanary:leakcanary-android:${leakcanary_version}"
 
     testImplementation 'junit:junit:4.12'
     testImplementation 'com.squareup.okhttp3:mockwebserver:4.2.1'

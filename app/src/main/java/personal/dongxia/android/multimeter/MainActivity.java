@@ -6,6 +6,7 @@ import java.util.List;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View.OnClickListener;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +22,7 @@ import io.reactivex.ObservableSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Function;
+import org.w3c.dom.Text;
 import personal.dongxia.android.business.Ip.IpService;
 import personal.dongxia.android.business.Ip.model.Ip;
 import personal.dongxia.android.framework.bundle.BundlePlatform;
@@ -130,10 +132,14 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.to_taurus).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                EditText editText = findViewById(R.id.edit_text);
+                String text = editText.getText().toString();
+                if (TextUtils.isEmpty(text)) {
+                    return;
+                }
                 Intent intent = new Intent(Intent.ACTION_VIEW);
 
-                String jumpUrl = "taurus://taurusclient/action/open_app?appId=" + URLEncoder.encode("1111111111111111") + "&type=2"; //必须对url做encode
-                Uri uri = Uri.parse(jumpUrl);
+                Uri uri = Uri.parse(text);
                 intent.setData(uri);
                 if (null != intent.resolveActivity(getPackageManager())) {
                     startActivity(intent);

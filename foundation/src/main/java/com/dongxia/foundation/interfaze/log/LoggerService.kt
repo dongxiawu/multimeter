@@ -1,4 +1,4 @@
-package com.dongxia.android.logger.interfaze
+package com.dongxia.foundation.interfaze.log
 
 /**
  * 通用日志服务

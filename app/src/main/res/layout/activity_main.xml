@@ -73,6 +73,11 @@
             android:text="to_dingtalk"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+        <EditText
+            android:id="@+id/edit_text"
+            android:hint="taurus://taurusclient/action/open_app"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
         <Button
             android:id="@+id/to_taurus"
             android:text="to_taurus"
