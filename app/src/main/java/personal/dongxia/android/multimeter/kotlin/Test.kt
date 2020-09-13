@@ -21,7 +21,6 @@ class Test {
      * 默认值
      */
     fun sum(a: Int, b: Int = 0) {
-        Log.i()
     }
 
     /**
