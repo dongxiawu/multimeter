@@ -3,8 +3,11 @@ package personal.dongxia.android.multimeter.phone
 import android.net.Uri
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.google.gson.Gson
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import personal.dongxia.android.multimeter.phone.api.ApiResponse
+import personal.dongxia.android.multimeter.phone.vo.Resource
 
 /**
  * @date 2020/9/19
@@ -20,28 +23,29 @@ class PhoneNumberInfoRepository {
         var index = 0
     }
 
-    fun loadPhoneNumberInfo(phoneNumber: String): LiveData<PhoneNumberInfo> {
+    fun load(phoneNumber: String): LiveData<Resource<PhoneNumberInfo>> {
+        val result = MutableLiveData<Resource<PhoneNumberInfo>>()
+        result.postValue(Resource.loading(null))
         val uri = Uri.Builder().scheme(SCHEME).authority(HOST).path(PATH)
                 .appendQueryParameter("key", KEY).appendQueryParameter("phone", phoneNumber).build()
-
-        val response = OkHttpClient().newCall(Request.Builder().url(uri.toString()).build()).execute()
-        val result = MutableLiveData<PhoneNumberInfo>()
-        val info = PhoneNumberInfo("浙江", "杭州", "0571", "310000${index++}", "中国移动")
-        result.value = info
-//        val client = OkHttpClient()
-//        val request = Request.Builder().url(uri.toString()).build()
-//        var response: Response? = null
-//        var result: QueryResult? = null
-//        try {
-//            response = client.newCall(request).execute()
-//            val stringResult = response.body!!.string()
-//            result = com.alibaba.fastjson.JSONObject.parseObject(stringResult, QueryResult::class.java)
-//            //result.setAddress(address);
-//        } catch (e: IOException) {
-//            // todo
-//        } finally {
-//            response?.close()
-//        }
+        Thread(Runnable {
+            val response = OkHttpClient().newCall(Request.Builder().url(uri.toString()).build()).execute()
+            if (response.isSuccessful) {
+                if (response.body != null) {
+                    val bean = Gson().fromJson(response.body?.string(), PhoneNumberInfoApiResponseBean::class.java)
+                    if (bean.resultCode == "200" && bean.result != null) {
+                        result.postValue(Resource.success(PhoneNumberInfo.from(bean)))
+                    } else {
+                        result.postValue(Resource.error(response.message, null))
+                    }
+                } else {
+                    // todo 结果为空
+                    result.postValue(Resource.error(response.message, null))
+                }
+            } else {
+                result.postValue(Resource.error(response.message, null))
+            }
+        }).start()
         return result
     }
 

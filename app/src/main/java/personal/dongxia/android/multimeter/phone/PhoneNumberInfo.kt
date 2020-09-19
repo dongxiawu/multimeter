@@ -26,4 +26,16 @@ data class PhoneNumberInfo(
                 "\n company = $company" +
                 "}"
     }
+
+    companion object {
+        fun from(bean: PhoneNumberInfoApiResponseBean): PhoneNumberInfo {
+            return PhoneNumberInfo(
+                    bean.result?.province ?: ""
+                    , bean.result?.city
+                    , bean.result?.areaCode
+                    , bean.result?.zip
+                    , bean.result?.company
+            )
+        }
+    }
 }
