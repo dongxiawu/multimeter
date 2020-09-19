@@ -13,6 +13,7 @@ public class IpActivity extends AppCompatActivity implements IpContract.View {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ip);
+
     }
 
     @Override

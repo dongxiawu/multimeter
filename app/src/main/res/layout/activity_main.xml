@@ -11,6 +11,12 @@
         android:orientation="vertical"
         tools:context=".MainActivity">
         <Button
+            android:id="@+id/phone_number"
+            android:text="to_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Button
             android:id="@+id/to_rxjava"
             android:text="to_rxjava"
             android:layout_width="match_parent"

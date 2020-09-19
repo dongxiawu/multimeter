@@ -30,6 +30,7 @@ import personal.dongxia.android.multimeter.databinding.DataBindingTestActivity;
 import personal.dongxia.android.multimeter.lifecycle.LifecycleTestActivity;
 import personal.dongxia.android.multimeter.district.LocationActivity;
 import personal.dongxia.android.multimeter.page.PageTestActivity;
+import personal.dongxia.android.multimeter.phone.PhoneNumberActivity;
 import personal.dongxia.android.multimeter.rxjava.RxjavaActivity;
 import personal.dongxia.android.multimeter.viewmodel.ViewModelTestActivity;
 
@@ -42,6 +43,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        findViewById(R.id.phone_number).setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, PhoneNumberActivity.class));
+            }
+        });
+
         findViewById(R.id.to_rxjava).setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {

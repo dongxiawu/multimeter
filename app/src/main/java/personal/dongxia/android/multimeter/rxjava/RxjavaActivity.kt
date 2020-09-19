@@ -151,7 +151,7 @@ class RxjavaActivity : AppCompatActivity() {
         val data = Pair(false, intent)
         Observable.just(data)
                 .concatMap(createFun(SyncIntentProcessorImpl()))
-                .concatMap(createFun(ASyncIntentProcessorImpl()))
+                .concatMap(createFun(SyncIntentProcessorImpl()))
                 .concatMap(createFun(SyncIntentProcessorImpl()))
                 .concatMap(createFun(ASyncIntentProcessorImpl()))
 //                .observeOn(AndroidSchedulers.mainThread())

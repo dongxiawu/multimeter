@@ -17,9 +17,9 @@ buildscript {
             'okhttp': "com.squareup.okhttp3:okhttp:${versions.okhttp}"
     ]
     repositories {
-        google()
-        jcenter()
-        mavenCentral()
+//        google()
+//        jcenter()
+//        mavenCentral()
         maven {
             url "http://mvnonline.alibaba-inc.com/mvn/repository"
         }
@@ -70,9 +70,9 @@ buildscript {
 allprojects {
 
     repositories {
-        google()
-        jcenter()
-        mavenCentral()
+//        google()
+//        jcenter()
+//        mavenCentral()
         maven {
             url "http://mvnonline.alibaba-inc.com/mvn/repository"
         }
